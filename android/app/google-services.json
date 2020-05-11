@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "240670019606",
+    "firebase_url": "https://online-testing-system.firebaseio.com",
+    "project_id": "online-testing-system",
+    "storage_bucket": "online-testing-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240670019606:android:27dd6c6e730034a46a6537",
+        "android_client_info": {
+          "package_name": "com.zain.fun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240670019606-7htqa4aj3edlmv6pjoiue7cb0ptofkgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_ul2ERh-yVZIdO0PJUJFhiEU8x3uhD1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240670019606-7htqa4aj3edlmv6pjoiue7cb0ptofkgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
