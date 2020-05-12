@@ -88,11 +88,21 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
           status = '';
           statusColor = AppColors.backgroundColor();
           if(questionNumber == timeAttack.length - 1){
-            seconds = 75;
+            if(test == 'ECAT')
+              seconds = 60;
+            else if(test == 'NET')
+              seconds = 75;
+            else if(test == 'FAST-NU')
+              seconds = 65;
             t.cancel();
           }
           else{
-            seconds = 75;
+            if(test == 'ECAT')
+              seconds = 60;
+            else if(test == 'NET')
+              seconds = 75;
+            else if(test == 'FAST-NU')
+              seconds = 65;
             questionNumber++;
           }
         });
@@ -334,6 +344,9 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
             await Future.delayed(Duration(milliseconds: 700));
 
             if(questionNumber == timeAttack.length - 1){
+              setState(() {
+                cancel = true;
+              });
               calculateResult();
               return;
             }

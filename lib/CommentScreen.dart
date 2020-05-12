@@ -429,41 +429,37 @@ class _CommentScreenState extends State<CommentScreen> {
              mainAxisAlignment: MainAxisAlignment.start,
              crossAxisAlignment: CrossAxisAlignment.stretch,
              children: <Widget>[
-               ListTile(
-                 leading: photoUrl.isEmpty ? CircleAvatar(
-                   radius: 25.0,
-                   backgroundColor: Colors.deepOrange,
-                   child: Text(
-                     username.substring(0, 1).toUpperCase(),
-                     style: TextStyle(
-                       fontSize: 35.0,
-                       color: Colors.white,
+               Padding(
+                 padding: EdgeInsets.only(top: 8.0),
+                 child: ListTile(
+                   leading: photoUrl.isEmpty ? CircleAvatar(
+                     radius: 25.0,
+                     backgroundColor: Colors.deepOrange,
+                     child: Text(
+                       username.substring(0, 1).toUpperCase(),
+                       style: TextStyle(
+                         fontSize: 35.0,
+                         color: Colors.white,
+                       ),
                      ),
+                   )
+                       : CircleAvatar(
+                     radius: 25.0,
+                     backgroundColor: Colors.deepOrange,
+                     backgroundImage: NetworkImage(photoUrl),
                    ),
-                 )
-                     : CircleAvatar(
-                   radius: 25.0,
-                   backgroundColor: Colors.deepOrange,
-                   backgroundImage: NetworkImage(photoUrl),
-                 ),
-                 title: Text(
-                     username,
-                     style: TextStyle(
-                       fontSize: 22,
-                       color: AppColors.textColor(),
-                     )
-                 ),
-                 subtitle: Text(
-                     email,
-                     style: TextStyle(
-                       fontSize: 12,
-                       color: Colors.blue[500],
-                     )
+                   title: Text(
+                       username,
+                       style: TextStyle(
+                         fontSize: 25,
+                         color: AppColors.textColor(),
+                       )
+                   ),
                  ),
                ),
                Padding(
                    padding: EdgeInsets.symmetric(
-                       vertical: 8.0, horizontal: 20.0),
+                       vertical: 10.0, horizontal: 20.0),
                    child: Text(
                      statement,
                      style: TextStyle(
@@ -529,41 +525,37 @@ class _CommentScreenState extends State<CommentScreen> {
                  mainAxisAlignment: MainAxisAlignment.start,
                  crossAxisAlignment: CrossAxisAlignment.stretch,
                  children: <Widget>[
-                   ListTile(
-                     leading: photoUrl.isEmpty ? CircleAvatar(
-                       radius: 25.0,
-                       backgroundColor: Colors.deepOrange,
-                       child: Text(
-                         user.username.substring(0, 1).toUpperCase(),
-                         style: TextStyle(
-                           fontSize: 35.0,
-                           color: Colors.white,
+                   Padding(
+                     padding: EdgeInsets.only(top: 8.0),
+                     child: ListTile(
+                       leading: photoUrl.isEmpty ? CircleAvatar(
+                         radius: 25.0,
+                         backgroundColor: Colors.deepOrange,
+                         child: Text(
+                           user.username.substring(0, 1).toUpperCase(),
+                           style: TextStyle(
+                             fontSize: 35.0,
+                             color: Colors.white,
+                           ),
                          ),
+                       )
+                           : CircleAvatar(
+                         radius: 25.0,
+                         backgroundColor: Colors.deepOrange,
+                         backgroundImage: NetworkImage(user.photoUrl),
                        ),
-                     )
-                         : CircleAvatar(
-                       radius: 25.0,
-                       backgroundColor: Colors.deepOrange,
-                       backgroundImage: NetworkImage(user.photoUrl),
-                     ),
-                     title: Text(
-                         user.username,
-                         style: TextStyle(
-                           fontSize: 22,
-                           color: AppColors.textColor(),
-                         )
-                     ),
-                     subtitle: Text(
-                         user.email,
-                         style: TextStyle(
-                           fontSize: 12,
-                           color: Colors.blue[500],
-                         )
+                       title: Text(
+                           user.username,
+                           style: TextStyle(
+                             fontSize: 25,
+                             color: AppColors.textColor(),
+                           )
+                       ),
                      ),
                    ),
                    Padding(
                        padding: EdgeInsets.symmetric(
-                           vertical: 8.0, horizontal: 20.0),
+                           vertical: 10.0, horizontal: 20.0),
                        child: Text(
                          statement,
                          style: TextStyle(

@@ -120,122 +120,114 @@ class _DiscussionPanelState extends State<DiscussionPanel> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              userID == currentUserID ? ListTile(
-                leading: photoUrl.isEmpty ? CircleAvatar(
-                  radius: 25.0,
-                  backgroundColor: Colors.deepOrange,
-                  child: Text(
-                    username.substring(0,1).toUpperCase(),
-                    style: TextStyle(
-                      fontSize: 35.0,
-                      color: Colors.white,
+              userID == currentUserID ? Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: ListTile(
+                  leading: photoUrl.isEmpty ? CircleAvatar(
+                    radius: 25.0,
+                    backgroundColor: Colors.deepOrange,
+                    child: Text(
+                      username.substring(0,1).toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 35.0,
+                        color: Colors.white,
+                      ),
                     ),
+                  )
+                      :CircleAvatar(
+                    radius: 25.0,
+                    backgroundColor: Colors.deepOrange,
+                    backgroundImage: NetworkImage(photoUrl),
                   ),
-                )
-                    :CircleAvatar(
-                  radius: 25.0,
-                  backgroundColor: Colors.deepOrange,
-                  backgroundImage: NetworkImage(photoUrl),
-                ),
-                title: Text(
-                    username,
-                    style: TextStyle(
-                      fontSize: 22,
+                  title: Text(
+                      username,
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: AppColors.textColor(),
+                      )
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.delete,
                       color: AppColors.textColor(),
-                    )
-                ),
-                subtitle: Text(
-                    email,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.blue[500],
-                    )
-                ),
-                trailing: IconButton(
-                  icon: Icon(
-                    Icons.delete,
-                    color: AppColors.textColor(),
-                    size: 25,
-                  ),
-                  onPressed: (){
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context){
-                          return AlertDialog(
-                            title: Text(
-                              'Delete Post',
-                              style: TextStyle(
-                                color: Colors.blue,
-                              ),
-                            ),
-                            content: Text('Are you sure you want to delete the post?'),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text(
-                                  'Yes',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 18,
-                                  ),
+                      size: 25,
+                    ),
+                    onPressed: (){
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context){
+                            return AlertDialog(
+                              title: Text(
+                                'Delete Post',
+                                style: TextStyle(
+                                  color: Colors.blue,
                                 ),
-                                onPressed: (){
-                                  Firestore.instance.collection('NewsFeed').document(postID).delete();
-                                  Firestore.instance.collection('Comments').document(postID).delete();
-                                  Navigator.of(context).pop();
-                                },
                               ),
-                              FlatButton(
-                                child: Text(
-                                    'No',
+                              content: Text('Are you sure you want to delete the post?'),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text(
+                                    'Yes',
                                     style: TextStyle(
-                                      color: Colors.red,
+                                      color: Colors.blue,
                                       fontSize: 18,
-                                    )
+                                    ),
+                                  ),
+                                  onPressed: (){
+                                    Firestore.instance.collection('NewsFeed').document(postID).delete();
+                                    Firestore.instance.collection('Comments').document(postID).delete();
+                                    Navigator.of(context).pop();
+                                  },
                                 ),
-                                onPressed: (){
-                                  Navigator.of(context).pop();
-                                },
-                              )
-                            ],
-                          );
-                        }
-                    );
-                  },
-                ),
-              ):ListTile(
-                leading: photoUrl.isEmpty ? CircleAvatar(
-                  radius: 25.0,
-                  backgroundColor: Colors.deepOrange,
-                  child: Text(
-                    username.substring(0,1).toUpperCase(),
-                    style: TextStyle(
-                      fontSize: 35.0,
-                      color: Colors.white,
-                    ),
+                                FlatButton(
+                                  child: Text(
+                                      'No',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 18,
+                                      )
+                                  ),
+                                  onPressed: (){
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          }
+                      );
+                    },
                   ),
-                )
-                    :CircleAvatar(
-                  radius: 25.0,
-                  backgroundColor: Colors.deepOrange,
-                  backgroundImage: NetworkImage(photoUrl),
                 ),
-                title: Text(
-                    username,
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: AppColors.textColor(),
-                    )
-                ),
-                subtitle: Text(
-                    email,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.blue[500],
-                    )
+              ):Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: ListTile(
+                  leading: photoUrl.isEmpty ? CircleAvatar(
+                    radius: 25.0,
+                    backgroundColor: Colors.deepOrange,
+                    child: Text(
+                      username.substring(0,1).toUpperCase(),
+                      style: TextStyle(
+                        fontSize: 35.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                      :CircleAvatar(
+                    radius: 25.0,
+                    backgroundColor: Colors.deepOrange,
+                    backgroundImage: NetworkImage(photoUrl),
+                  ),
+                  title: Text(
+                      username,
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: AppColors.textColor(),
+                      )
+                  ),
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0,horizontal: 20.0),
+                  padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 20.0),
                   child: Text(
                     statement,
                     style: TextStyle(

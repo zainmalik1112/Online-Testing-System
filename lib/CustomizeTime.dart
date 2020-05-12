@@ -5,7 +5,7 @@ import 'package:fun/AppColors.dart';
 
 class CustomizeTime extends StatefulWidget {
 
-  final totalLength;
+  final String totalLength;
   final test;
 
   CustomizeTime({this.test,this.totalLength});
@@ -19,7 +19,7 @@ class CustomizeTime extends StatefulWidget {
 
 class _CustomizeTimeState extends State<CustomizeTime> {
 
-  final totalLength;
+  final String totalLength;
   final test;
   String minutes = "";
   String seconds = "";
@@ -146,6 +146,16 @@ class _CustomizeTimeState extends State<CustomizeTime> {
                 },
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Suggested time according to length of test: '+ (num.tryParse(totalLength) + 5).toString(),
+                style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontSize: 17.0,
+                ),
+              ),
+            )
           ],
         ),
       ),

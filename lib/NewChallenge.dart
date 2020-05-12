@@ -102,53 +102,49 @@ class _NewChallengeState extends State<NewChallenge> {
   buildUserDetail(String username, String uid, String photoUrl, String email){
     return Column(
       children: <Widget>[
-        ListTile(
-          leading: photoUrl.isEmpty ?
-          CircleAvatar(
-            backgroundColor: Colors.deepOrange,
-            radius: 30.0,
-            child: Text(
-              username.substring(0,1).toUpperCase(),
+        Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: ListTile(
+            leading: photoUrl.isEmpty ?
+            CircleAvatar(
+              backgroundColor: Colors.deepOrange,
+              radius: 30.0,
+              child: Text(
+                username.substring(0,1).toUpperCase(),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                ),
+              ),
+            ):
+            CircleAvatar(
+              backgroundImage: NetworkImage(photoUrl),
+              radius: 30.0,
+            ),
+
+            title: Text(
+              username,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 30.0,
+                color: AppColors.textColor(),
+                fontSize: 24.0,
               ),
             ),
-          ):
-          CircleAvatar(
-            backgroundImage: NetworkImage(photoUrl),
-            radius: 30.0,
-          ),
-
-          title: Text(
-            username,
-            style: TextStyle(
-              color: AppColors.textColor(),
-              fontSize: 20.0,
-            ),
-          ),
-          subtitle: Text(
-            email,
-            style: TextStyle(
-              color: Colors.blueAccent,
-              fontSize: 15.0,
-            ),
-          ),
-          onTap: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChallengeSubject(
-                  currentUserID: currentUserID,
-                  currentUserUsername: currentUserUsername,
-                  currentUserPhotoUrl: currentUserPhotoUrl,
-                  challengedID: uid,
-                  challengedUsername: username,
-                  challengedPhotoUrl: photoUrl,
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChallengeSubject(
+                    currentUserID: currentUserID,
+                    currentUserUsername: currentUserUsername,
+                    currentUserPhotoUrl: currentUserPhotoUrl,
+                    challengedID: uid,
+                    challengedUsername: username,
+                    challengedPhotoUrl: photoUrl,
+                  )
                 )
-              )
-            );
-          },
+              );
+            },
+          ),
         ),
         Divider(
           color: Colors.grey,
