@@ -149,7 +149,7 @@ class _CustomizeTimeState extends State<CustomizeTime> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Suggested time according to length of test: '+ (num.tryParse(totalLength) + 5).toString(),
+                'Suggested time according to length of test: '+ (num.tryParse(totalLength) + 5).toString() + ' min',
                 style: TextStyle(
                   color: Colors.blueAccent,
                   fontSize: 17.0,

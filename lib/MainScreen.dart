@@ -207,7 +207,7 @@ class _MainScreenState extends State<MainScreen> {
                     icon: Icon(
                       Icons.notifications,
                       color: notification,
-                      size: 30.0,
+                      size: 28.0,
                     ),
                     onPressed: ()
                     {

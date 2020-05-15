@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fun/AppColors.dart';
+import 'package:fun/ViewMCQ.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pie_chart/pie_chart.dart';
+
+import 'MCQ.dart';
 
 class PerformanceScreen extends StatefulWidget {
 
@@ -13,9 +16,11 @@ class PerformanceScreen extends StatefulWidget {
   final double testScore;
   final double totalQuestions;
   final double totalMarks;
+  final List<MCQ> questions;
+  final List<String> selectedOptions;
 
-  PerformanceScreen({this.correct,this.incorrect,this.attempted,this.unattempted,
-  this.testScore, this.totalQuestions,this.totalMarks,this.testType});
+  PerformanceScreen({this.questions,this.correct,this.incorrect,this.attempted,this.unattempted,
+  this.testScore, this.totalQuestions,this.totalMarks,this.testType,this.selectedOptions});
 
   @override
   _PerformanceScreenState createState() => _PerformanceScreenState(
@@ -27,6 +32,8 @@ class PerformanceScreen extends StatefulWidget {
     totalQuestions: this.totalQuestions,
     totalMarks: this.totalMarks,
     testType: this.testType,
+    questions: this.questions,
+    selectedOptions: this.selectedOptions,
   );
 }
 
@@ -40,11 +47,13 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
   final double testScore;
   final double totalQuestions;
   final double totalMarks;
+  final List<MCQ> questions;
+  final List<String> selectedOptions;
   Map<String, double> dataMap = new Map();
   Map<String, double> dataMap2 = new Map();
 
-  _PerformanceScreenState({this.correct,this.incorrect,this.attempted,this.unattempted,
-    this.testScore, this.totalQuestions,this.totalMarks,this.testType});
+  _PerformanceScreenState({this.questions,this.correct,this.incorrect,this.attempted,this.unattempted,
+    this.testScore, this.totalQuestions,this.totalMarks,this.testType,this.selectedOptions});
 
 
   @override
@@ -135,6 +144,7 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
           buildStatisticContainer('Test Score', testScore.round().toString()+'/'+
               totalMarks.round().toString()
               , 200, double.infinity, false),
+          buildQuestionContainer(),
         ],
       ),
     );
@@ -282,6 +292,245 @@ class _PerformanceScreenState extends State<PerformanceScreen> {
         ),
       ),
     );
+  }
+
+  buildQuestionContainer()
+  {
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+          color: AppColors.containerColor()
+        ),
+        height: 510,
+        child: ListView(
+          children: <Widget>[
+            DataTable(
+              columns: [
+                DataColumn(
+                    label: Text(
+                        'Question Number',
+                      style: TextStyle(
+                        color: AppColors.textColor(),
+                        fontSize: 20.0,
+                      ),
+                    )
+                ),
+                DataColumn(
+                    label: Text(
+                        'Status',
+                      style: TextStyle(
+                        color: AppColors.textColor(),
+                        fontSize: 20.0,
+                      ),
+                    )
+                )
+              ],
+             rows: getRows(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<DataRow> getRows()
+  {
+    List<DataRow> list = [];
+
+    for(int i = 0; i < questions.length; i++){
+      if(selectedOptions[i] == questions[i].correctAnswer){
+        list.add(
+          DataRow(
+            cells: [
+              DataCell(
+                  Center(
+                    child: GestureDetector(
+                      child: Text(
+                          (i+1).toString(),
+                        style: TextStyle(
+                          color: AppColors.textColor(),
+                          fontSize: 20.0,
+                        ),
+                      ),
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ViewMCQ(
+                              statement: questions[i].statement,
+                              opA: questions[i].opA,
+                              opB: questions[i].opB,
+                              opC: questions[i].opC,
+                              opD: questions[i].opD,
+                              correctAnswer: questions[i].correctAnswer,
+                              explanation: questions[i].explanation,
+                            )
+                          )
+                        );
+                      },
+                    ),
+                  )
+              ),
+              DataCell(
+                GestureDetector(
+                  child: Icon(
+                    Icons.check,
+                    color: Colors.green,
+                    size: 30.0,
+                  ),
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ViewMCQ(
+                              statement: questions[i].statement,
+                              opA: questions[i].opA,
+                              opB: questions[i].opB,
+                              opC: questions[i].opC,
+                              opD: questions[i].opD,
+                              correctAnswer: questions[i].correctAnswer,
+                              explanation: questions[i].explanation,
+                            )
+                        )
+                    );
+                  },
+                ),
+              ),
+            ]
+          )
+        );
+      }
+      else if(selectedOptions[i] != questions[i].correctAnswer && selectedOptions[i] != null){
+        list.add(
+            DataRow(
+                cells: [
+                  DataCell(
+                      Center(
+                        child: GestureDetector(
+                          child: Text(
+                              (i+1).toString(),
+                            style: TextStyle(
+                              color: AppColors.textColor(),
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ViewMCQ(
+                                      statement: questions[i].statement,
+                                      opA: questions[i].opA,
+                                      opB: questions[i].opB,
+                                      opC: questions[i].opC,
+                                      opD: questions[i].opD,
+                                      correctAnswer: questions[i].correctAnswer,
+                                      explanation: questions[i].explanation,
+                                    )
+                                )
+                            );
+                          },
+                        ),
+                      )
+                  ),
+                  DataCell(
+                    GestureDetector(
+                      child: Icon(
+                        Icons.clear,
+                        color: Colors.red,
+                        size: 30.0,
+                      ),
+                      onTap: (){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ViewMCQ(
+                                  statement: questions[i].statement,
+                                  opA: questions[i].opA,
+                                  opB: questions[i].opB,
+                                  opC: questions[i].opC,
+                                  opD: questions[i].opD,
+                                  correctAnswer: questions[i].correctAnswer,
+                                  explanation: questions[i].explanation,
+                                )
+                            )
+                        );
+                      },
+                    ),
+                  ),
+                ]
+            )
+        );
+      }
+      else if(selectedOptions[i] == null){
+        list.add(
+            DataRow(
+                cells: [
+                  DataCell(
+                      Center(
+                        child: GestureDetector(
+                          child: Text(
+                              (i+1).toString(),
+                            style: TextStyle(
+                              color: AppColors.textColor(),
+                              fontSize: 20.0,
+                            ),
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ViewMCQ(
+                                      statement: questions[i].statement,
+                                      opA: questions[i].opA,
+                                      opB: questions[i].opB,
+                                      opC: questions[i].opC,
+                                      opD: questions[i].opD,
+                                      correctAnswer: questions[i].correctAnswer,
+                                      explanation: questions[i].explanation,
+                                    )
+                                )
+                            );
+                          },
+                        ),
+                      )
+                  ),
+                  DataCell(
+                    GestureDetector(
+                      child: Text(
+                          'Unattempted',
+                        style: TextStyle(
+                          color: AppColors.textColor(),
+                          fontSize: 18.0,
+                        ),
+                      ),
+                      onTap: (){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ViewMCQ(
+                                  statement: questions[i].statement,
+                                  opA: questions[i].opA,
+                                  opB: questions[i].opB,
+                                  opC: questions[i].opC,
+                                  opD: questions[i].opD,
+                                  correctAnswer: questions[i].correctAnswer,
+                                  explanation: questions[i].explanation,
+                                )
+                            )
+                        );
+                      },
+                    ),
+                  ),
+                ]
+            )
+        );
+      }
+    }
+
+    return list;
   }
 }
 

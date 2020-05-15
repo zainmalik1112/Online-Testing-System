@@ -31,7 +31,7 @@ class _McqScreenState extends State<McqScreen> {
   int correct = 0;
   int incorrect = 0;
   int testScore = 0;
-  int minutes = 2;
+  int minutes = 35;
   int seconds = 00;
   int totalMarks;
   bool showProgress = false;
@@ -159,6 +159,8 @@ class _McqScreenState extends State<McqScreen> {
             totalQuestions: practiceTest.length.toDouble(),
             totalMarks: practiceTest.length.toDouble(),
             testType: 'Practice',
+            questions: practiceTest,
+            selectedOptions: selectedOptions,
           ),
         )
     );

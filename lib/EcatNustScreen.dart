@@ -212,6 +212,8 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
           testScore: testScore.toDouble(),
           totalMarks: totalScore.toDouble(),
           testType: 'FullFledge',
+          questions: fullTest,
+          selectedOptions: selectedOptions,
         )
       )
     );
@@ -249,6 +251,8 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
               testScore: testScore.toDouble(),
               totalMarks: totalScore.toDouble(),
               testType: 'FullFledge',
+              questions: fullTest,
+              selectedOptions: selectedOptions,
             )
         )
     );
@@ -284,6 +288,8 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
                testScore: testScore.toDouble(),
                totalMarks: totalScore.toDouble(),
                testType: 'FullFledge',
+               questions: fullTest,
+               selectedOptions: selectedOptions,
              )
          )
      );
@@ -321,6 +327,8 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
               testScore: testScore.toDouble(),
               totalMarks: totalScore.toDouble(),
               testType: 'FullFledge',
+              questions: fullTest,
+              selectedOptions: selectedOptions,
             )
         )
     );
