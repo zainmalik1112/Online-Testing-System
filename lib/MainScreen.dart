@@ -14,7 +14,6 @@ import 'package:fun/Notifications.dart';
 import 'package:fun/ProfilePage.dart';
 import 'package:fun/TimeAttackTest.dart';
 import 'package:fun/User.dart';
-import 'package:fun/Videos.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fun/WelcomeScreen.dart';
 
@@ -348,30 +347,6 @@ class _MainScreenState extends State<MainScreen> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => TimeAttackTest(),
-                        )
-                    );
-                  },
-                ),
-
-                ListTile(
-                  leading: Icon(
-                    Icons.play_arrow,
-                    size: 25.0,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    'Educational Videos',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                    ),
-                  ),
-
-                  onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Videos(),
                         )
                     );
                   },
