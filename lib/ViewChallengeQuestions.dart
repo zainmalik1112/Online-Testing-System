@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fun/AppColors.dart';
 import 'package:fun/MCQ.dart';
-import 'package:fun/ViewMCQ.dart';
 
 class ViewChallengeQuestions extends StatefulWidget {
 
