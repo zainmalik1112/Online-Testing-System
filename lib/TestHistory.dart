@@ -34,6 +34,12 @@ class _TestHistoryState extends State<TestHistory> {
   _TestHistoryState({this.currentUserID,this.test,this.subject,this.chapter});
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -77,6 +83,7 @@ class _TestHistoryState extends State<TestHistory> {
             for(var test in history){
               final theTest = test.data['test'];
               final testScore = test.data['testScore'];
+              final theChapter = test.data['chapter'];
               final testID = test.data['testID'];
               final correct = test.data['correct'];
               final totalScore = num.tryParse(test.data['totalQuestions']);
@@ -84,7 +91,7 @@ class _TestHistoryState extends State<TestHistory> {
               final unattempted = test.data['unattempted'];
               final Timestamp timeStamp = test.data['timestamp'];
 
-              if(theTest == this.test){
+              if(theTest == this.test && theChapter == this.chapter){
                 testHistory.add(
                     buildContainer(testScore, correct, totalScore, timeStamp,
                         incorrect,unattempted,testID)

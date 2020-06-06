@@ -190,6 +190,8 @@ class _ChapterScreenState extends State<ChapterScreen> {
             progress = false;
           });
 
+          //return;
+
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -213,7 +215,7 @@ class _ChapterScreenState extends State<ChapterScreen> {
         .where('subject', isEqualTo: subjectName)
         .where('chapter', isEqualTo: chapter)
         .getDocuments().then((QuerySnapshot snapshot){
-      for(int i = 0; i < snapshot.documents.length; i++){
+      while(true){
         int index = math.Random.secure().nextInt(snapshot.documents.length);
          MCQ mcq = MCQ(
               id: snapshot.documents[index].data['mcqID'],
@@ -231,26 +233,27 @@ class _ChapterScreenState extends State<ChapterScreen> {
             );
 
         if(mcq.difficulty == 'easy' && easyCount < 5){
-          if(!subject.contains(mcq)) {
+          if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
         else if(mcq.difficulty == 'normal' && normalCount < 15){
-          if(!subject.contains(mcq)) {
+          if(!isDuplicate(subject,mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
         else if(mcq.difficulty == 'hard' && hardCount < 10){
-          if(!subject.contains(mcq)) {
+          if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             hardCount++;
           }
         }
 
-        if(easyCount == 5 && normalCount == 15 && hardCount == 10)
+        if(easyCount == 5 && normalCount == 15 && hardCount == 10) {
           break;
+        }
       }
     });
 
@@ -301,19 +304,19 @@ class _ChapterScreenState extends State<ChapterScreen> {
         );
 
         if(mcq.difficulty == 'easy' && easyCount < 5){
-          if(!subject.contains(mcq)) {
+          if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
         else if(mcq.difficulty == 'normal' && normalCount < 5){
-          if(!subject.contains(mcq)) {
+          if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
         else if(mcq.difficulty == 'hard' && hardCount < 5){
-          if(!subject.contains(mcq)) {
+          if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             hardCount++;
           }
@@ -338,5 +341,14 @@ class _ChapterScreenState extends State<ChapterScreen> {
       if(subject[i].difficulty == 'hard')
         practiceTest.add(subject[i]);
     }
+  }
+
+  bool isDuplicate(List<MCQ> subject, MCQ mcq){
+    for(int i = 0; i < subject.length; i++){
+      if(subject[i].id == mcq.id) {
+        return true;
+      }
+    }
+    return false;
   }
 }
