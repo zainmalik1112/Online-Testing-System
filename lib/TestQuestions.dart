@@ -12,7 +12,7 @@ class TestQuestions extends StatefulWidget {
 
   @override
   _TestQuestionsState createState() => _TestQuestionsState(
-    testID: this.testID
+      testID: this.testID
   );
 }
 
@@ -39,14 +39,14 @@ class _TestQuestionsState extends State<TestQuestions> {
       body: buildBody(),
     );
   }
-  
+
   buildBody()
   {
     return ListView(
       children: <Widget>[
         StreamBuilder(
           stream: Firestore.instance.collection('TestCollections')
-          .document(testID).collection('Questions').snapshots(),
+              .document(testID).collection('Questions').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
             if(!snapshot.hasData){
               return Center(
@@ -70,14 +70,14 @@ class _TestQuestionsState extends State<TestQuestions> {
               final explanation = question.data['explanation'];
 
               testQuestions.add(
-                buildContainer(statement, opA, opB, opC, opD, correctAnswer, explanation)
+                  buildContainer(statement, opA, opB, opC, opD, correctAnswer, explanation)
               );
             }
 
             return Column(
               children: testQuestions,
             );
-        },
+          },
         )
       ],
     );
@@ -123,8 +123,8 @@ class _TestQuestionsState extends State<TestQuestions> {
               Text(
                 statement,
                 style: TextStyle(
-                  color: AppColors.textColor(),
-                  fontSize: 20.0
+                    color: AppColors.textColor(),
+                    fontSize: 20.0
                 ),
               )
             ],
@@ -133,18 +133,18 @@ class _TestQuestionsState extends State<TestQuestions> {
 
         onTap: (){
           Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ViewMCQ(
-                statement: statement,
-                opA: opA,
-                opB: opB,
-                opC: opC,
-                opD: opD,
-                correctAnswer: correctAnswer,
-                explanation: explanation,
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ViewMCQ(
+                    statement: statement,
+                    opA: opA,
+                    opB: opB,
+                    opC: opC,
+                    opD: opD,
+                    correctAnswer: correctAnswer,
+                    explanation: explanation,
+                  )
               )
-            )
           );
         },
       ),

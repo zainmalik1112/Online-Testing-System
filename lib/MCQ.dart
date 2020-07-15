@@ -29,7 +29,8 @@ class MCQ{
   });
 
   static void addMCQ(String test, String subject, String chapter) {
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 1; i++) {
+      print('Hello');
       var uid = Uuid().v4();
       Firestore.instance.collection(test).document(uid).setData(({
         'statement': 'This is an easy $test question\nsubject: $subject\n chapter: $chapter\nid: $uid',
@@ -47,7 +48,9 @@ class MCQ{
       }));
     }
 
-      for (int i = 0; i < 20; i++) {
+    return;
+
+      for (int i = 0; i < 1; i++) {
         var uid = Uuid().v4();
         Firestore.instance.collection(test).document(uid).setData(({
           'statement': 'This is an normal $test question\nsubject: $subject\n chapter: $chapter\nid: $uid',
@@ -65,7 +68,7 @@ class MCQ{
         }));
       }
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 1; i++) {
           var uid = Uuid().v4();
           Firestore.instance.collection(test).document(uid).setData(({
             'statement': 'This is an hard $test question\nsubject: $subject\n chapter: $chapter\nid: $uid',

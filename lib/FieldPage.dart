@@ -234,19 +234,19 @@ class _FieldPageState extends State<FieldPage> {
               difficulty: snapshot.documents[index].data['difficulty'],
             );
 
-        if(mcq.difficulty == 'easy' && easyCount < 5){
+        if(mcq.difficulty == 'Easy' && easyCount < 5){
           if(!subject.contains(mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if(mcq.difficulty == 'normal' && normalCount < 15){
+        else if(mcq.difficulty == 'Normal' && normalCount < 15){
           if(!subject.contains(mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if(mcq.difficulty == 'hard' && hardCount < 10){
+        else if(mcq.difficulty == 'Hard' && hardCount < 10){
           if(!subject.contains(mcq)) {
             subject.add(mcq);
             hardCount++;
@@ -259,17 +259,17 @@ class _FieldPageState extends State<FieldPage> {
     });
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'easy')
+      if(subject[i].difficulty == 'Easy')
         subjectMCQs.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'normal')
+      if(subject[i].difficulty == 'Normal')
         subjectMCQs.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'hard')
+      if(subject[i].difficulty == 'Hard')
         subjectMCQs.add(subject[i]);
     }
   }
@@ -302,19 +302,19 @@ class _FieldPageState extends State<FieldPage> {
           difficulty: snapshot.documents[index].data['difficulty'],
         );
 
-        if(mcq.difficulty == 'easy' && easyCount < 2){
+        if(mcq.difficulty == 'Easy' && easyCount < 2){
           if(!subject.contains(mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if(mcq.difficulty == 'normal' && normalCount < 4){
+        else if(mcq.difficulty == 'Normal' && normalCount < 4){
           if(!subject.contains(mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if(mcq.difficulty == 'hard' && hardCount < 4){
+        else if(mcq.difficulty == 'Hard' && hardCount < 4){
           if(!subject.contains(mcq)){
             subject.add(mcq);
             hardCount++;
@@ -327,17 +327,17 @@ class _FieldPageState extends State<FieldPage> {
     });
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'easy')
+      if(subject[i].difficulty == 'Easy')
         subjectMCQs.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'normal')
+      if(subject[i].difficulty == 'Normal')
         subjectMCQs.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'hard')
+      if(subject[i].difficulty == 'Hard')
         subjectMCQs.add(subject[i]);
     }
   }
@@ -467,19 +467,19 @@ class _FieldPageState extends State<FieldPage> {
           difficulty: snapshot.documents[index].data['difficulty'],
         );
 
-        if (mcq.difficulty == 'easy' && easyCount < totalEasyCount) {
+        if (mcq.difficulty == 'Easy' && easyCount < totalEasyCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if (mcq.difficulty == 'normal' && normalCount < totalNormalCount) {
+        else if (mcq.difficulty == 'Normal' && normalCount < totalNormalCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if (mcq.difficulty == 'hard' && hardCount < totalHardCount) {
+        else if (mcq.difficulty == 'Hard' && hardCount < totalHardCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             hardCount++;
@@ -492,17 +492,17 @@ class _FieldPageState extends State<FieldPage> {
     });
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'easy')
+      if (subject[i].difficulty == 'Easy')
         subjectMCQs.add(subject[i]);
     }
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'normal')
+      if (subject[i].difficulty == 'Normal')
         subjectMCQs.add(subject[i]);
     }
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'hard')
+      if (subject[i].difficulty == 'Hard')
         subjectMCQs.add(subject[i]);
     }
   }
@@ -564,19 +564,19 @@ class _FieldPageState extends State<FieldPage> {
           difficulty: snapshot.documents[index].data['difficulty'],
         );
 
-        if (mcq.difficulty == 'easy' && easyCount < totalEasyCount) {
+        if (mcq.difficulty == 'Easy' && easyCount < totalEasyCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if (mcq.difficulty == 'normal' && normalCount < totalNormalCount) {
+        else if (mcq.difficulty == 'Normal' && normalCount < totalNormalCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if (mcq.difficulty == 'hard' && hardCount < totalHardCount) {
+        else if (mcq.difficulty == 'Hard' && hardCount < totalHardCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             hardCount++;
@@ -589,17 +589,17 @@ class _FieldPageState extends State<FieldPage> {
     });
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'easy')
+      if (subject[i].difficulty == 'Easy')
         subjectMCQs.add(subject[i]);
     }
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'normal')
+      if (subject[i].difficulty == 'Normal')
         subjectMCQs.add(subject[i]);
     }
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'hard')
+      if (subject[i].difficulty == 'Hard')
         subjectMCQs.add(subject[i]);
     }
   }
@@ -656,19 +656,19 @@ class _FieldPageState extends State<FieldPage> {
           difficulty: snapshot.documents[index].data['difficulty'],
         );
 
-        if (mcq.difficulty == 'easy' && easyCount < totalEasyCount) {
+        if (mcq.difficulty == 'Easy' && easyCount < totalEasyCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if (mcq.difficulty == 'normal' && normalCount < totalNormalCount) {
+        else if (mcq.difficulty == 'Normal' && normalCount < totalNormalCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if (mcq.difficulty == 'hard' && hardCount < totalHardCount) {
+        else if (mcq.difficulty == 'Hard' && hardCount < totalHardCount) {
           if (!subject.contains(mcq)) {
             subject.add(mcq);
             hardCount++;
@@ -681,17 +681,17 @@ class _FieldPageState extends State<FieldPage> {
     });
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'easy')
+      if (subject[i].difficulty == 'Easy')
         subjectMCQs.add(subject[i]);
     }
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'normal')
+      if (subject[i].difficulty == 'Normal')
         subjectMCQs.add(subject[i]);
     }
 
     for (int i = 0; i < subject.length; i++) {
-      if (subject[i].difficulty == 'hard')
+      if (subject[i].difficulty == 'Hard')
         subjectMCQs.add(subject[i]);
     }
   }

@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fun/AppColors.dart';
-import 'package:fun/Test%20Questions.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:timeago/timeago.dart' as TimeAgo;
+
+import 'TestQuestions.dart';
 
 class TestHistory extends StatefulWidget {
 

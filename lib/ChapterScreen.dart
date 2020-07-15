@@ -163,6 +163,7 @@ class _ChapterScreenState extends State<ChapterScreen> {
           subject = subjectName;
           chapter = chapterName;
 
+
           setState(() {
             progress = true;
           });
@@ -189,8 +190,6 @@ class _ChapterScreenState extends State<ChapterScreen> {
           setState(() {
             progress = false;
           });
-
-          //return;
 
           Navigator.push(
             context,
@@ -232,19 +231,19 @@ class _ChapterScreenState extends State<ChapterScreen> {
               difficulty: snapshot.documents[index].data['difficulty'],
             );
 
-        if(mcq.difficulty == 'easy' && easyCount < 5){
+        if(mcq.difficulty == 'Easy' && easyCount < 5){
           if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if(mcq.difficulty == 'normal' && normalCount < 15){
+        else if(mcq.difficulty == 'Normal' && normalCount < 15){
           if(!isDuplicate(subject,mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if(mcq.difficulty == 'hard' && hardCount < 10){
+        else if(mcq.difficulty == 'Hard' && hardCount < 10){
           if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             hardCount++;
@@ -258,17 +257,17 @@ class _ChapterScreenState extends State<ChapterScreen> {
     });
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'easy')
+      if(subject[i].difficulty == 'Easy')
         practiceTest.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'normal')
+      if(subject[i].difficulty == 'Normal')
         practiceTest.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'hard')
+      if(subject[i].difficulty == 'Hard')
         practiceTest.add(subject[i]);
     }
   }
@@ -303,19 +302,19 @@ class _ChapterScreenState extends State<ChapterScreen> {
           difficulty: snapshot.documents[index].data['difficulty'],
         );
 
-        if(mcq.difficulty == 'easy' && easyCount < 5){
+        if(mcq.difficulty == 'Easy' && easyCount < 5){
           if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             easyCount++;
           }
         }
-        else if(mcq.difficulty == 'normal' && normalCount < 5){
+        else if(mcq.difficulty == 'Normal' && normalCount < 5){
           if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             normalCount++;
           }
         }
-        else if(mcq.difficulty == 'hard' && hardCount < 5){
+        else if(mcq.difficulty == 'Hard' && hardCount < 5){
           if(!isDuplicate(subject, mcq)) {
             subject.add(mcq);
             hardCount++;
@@ -328,17 +327,17 @@ class _ChapterScreenState extends State<ChapterScreen> {
     });
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'easy')
+      if(subject[i].difficulty == 'Easy')
         practiceTest.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'normal')
+      if(subject[i].difficulty == 'Normal')
         practiceTest.add(subject[i]);
     }
 
     for(int i = 0; i < subject.length; i++){
-      if(subject[i].difficulty == 'hard')
+      if(subject[i].difficulty == 'Hard')
         practiceTest.add(subject[i]);
     }
   }
