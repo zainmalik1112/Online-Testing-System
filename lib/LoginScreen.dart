@@ -145,7 +145,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             progress = true;
                           });
                           try{
-                            final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                            final user = await _auth.signInWithEmailAndPassword(email: email.trim()
+                                , password: password);
                             if(user != null){
                               setState(() {
                                 progress = false;
