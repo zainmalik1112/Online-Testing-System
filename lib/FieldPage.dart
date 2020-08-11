@@ -377,6 +377,41 @@ class _FieldPageState extends State<FieldPage> {
     return fullTest;
   }
 
+  prepareNTS(String field) async
+  {
+    List<MCQ> fullTest = [];
+
+    if(field == 'Pre-Engineering') {
+      try {
+        await prepareNTSSubjects('Mathematics');
+        await prepareNTSSubjects('Physics');
+        await prepareNTSSubjects('Chemistry');
+        await prepareNTSSubjects('English');
+        await prepareNTSSubjects('Intelligence');
+      }
+      catch(e){
+        showAlertDialogue(e.toString());
+        return;
+      }
+    }
+    else {
+      try {
+        await prepareNTSSubjects('Mathematics');
+        await prepareNTSSubjects('Physics');
+        await prepareNTSSubjects('Computer Science');
+        await prepareNTSSubjects('English');
+        await prepareNTSSubjects('Intelligence');
+      }
+      catch(e){
+        showAlertDialogue(e.toString());
+        return;
+      }
+    }
+
+    fullTest = subjectMCQs;
+    return fullTest;
+  }
+
   prepareFAST(String field) async
   {
     List<MCQ> fullTest = [];
@@ -628,6 +663,103 @@ class _FieldPageState extends State<FieldPage> {
       totalEasyCount = 2;
       totalNormalCount = 5;
       totalHardCount = 3;
+    }
+    else if (name == 'Intelligence') {
+      totalEasyCount = 5;
+      totalNormalCount = 10;
+      totalHardCount = 5;
+    }
+
+    await Firestore.instance.collection(test)
+        .where('test', isEqualTo: test)
+        .where('subject', isEqualTo: name)
+        .getDocuments().then((QuerySnapshot snapshot) {
+      for (int i = 0; i < snapshot.documents.length; i++) {
+        int index = math.Random.secure().nextInt(snapshot.documents.length);
+        MCQ mcq = MCQ(
+          id: snapshot.documents[index].data['mcqID'],
+          statement: snapshot.documents[index].data['statement'],
+          opA: snapshot.documents[index].data['opA'],
+          opB: snapshot.documents[index].data['opB'],
+          opC: snapshot.documents[index].data['opC'],
+          opD: snapshot.documents[index].data['opD'],
+          correctAnswer: snapshot.documents[index].data['correctAnswer'],
+          explanation: snapshot.documents[index].data['explanation'],
+          test: snapshot.documents[index].data['test'],
+          subject: snapshot.documents[index].data['subject'],
+          chapter: snapshot.documents[index].data['chapter'],
+          difficulty: snapshot.documents[index].data['difficulty'],
+        );
+
+        if (mcq.difficulty == 'Easy' && easyCount < totalEasyCount) {
+          if (!subject.contains(mcq)) {
+            subject.add(mcq);
+            easyCount++;
+          }
+        }
+        else if (mcq.difficulty == 'Normal' && normalCount < totalNormalCount) {
+          if (!subject.contains(mcq)) {
+            subject.add(mcq);
+            normalCount++;
+          }
+        }
+        else if (mcq.difficulty == 'Hard' && hardCount < totalHardCount) {
+          if (!subject.contains(mcq)) {
+            subject.add(mcq);
+            hardCount++;
+          }
+        }
+
+        if (easyCount == totalEasyCount && normalCount == totalNormalCount && hardCount == totalHardCount)
+          break;
+      }
+    });
+
+    for (int i = 0; i < subject.length; i++) {
+      if (subject[i].difficulty == 'Easy')
+        subjectMCQs.add(subject[i]);
+    }
+
+    for (int i = 0; i < subject.length; i++) {
+      if (subject[i].difficulty == 'Normal')
+        subjectMCQs.add(subject[i]);
+    }
+
+    for (int i = 0; i < subject.length; i++) {
+      if (subject[i].difficulty == 'Hard')
+        subjectMCQs.add(subject[i]);
+    }
+  }
+
+  prepareNTSSubjects(String name) async
+  {
+    List<MCQ> subject = [];
+    int easyCount = 0;
+    int normalCount = 0;
+    int hardCount = 0;
+    int totalEasyCount;
+    int totalNormalCount;
+    int totalHardCount;
+
+    if (name == 'Mathematics') {
+      totalEasyCount = 5;
+      totalNormalCount = 10;
+      totalHardCount = 5;
+    }
+    else if (name == 'Physics') {
+      totalEasyCount = 5;
+      totalNormalCount = 10;
+      totalHardCount = 5;
+    }
+    else if (name == 'Chemistry' || name == 'Computer Science') {
+      totalEasyCount = 5;
+      totalNormalCount = 10;
+      totalHardCount = 5;
+    }
+    else if (name == 'English') {
+      totalEasyCount = 5;
+      totalNormalCount = 10;
+      totalHardCount = 5;
     }
     else if (name == 'Intelligence') {
       totalEasyCount = 5;

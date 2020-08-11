@@ -265,10 +265,10 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
                 ),
               ),
 
-              buildOptionContainer(timeAttack[questionNumber].opA, opAColor, 'A'),
-              buildOptionContainer(timeAttack[questionNumber].opB, opBColor, 'B'),
-              buildOptionContainer(timeAttack[questionNumber].opC, opCColor, 'C'),
-              buildOptionContainer(timeAttack[questionNumber].opD, opDColor, 'D'),
+              buildOptionContainer(timeAttack[questionNumber].opA, opAColor, 'A',timeAttack[questionNumber].correctAnswer),
+              buildOptionContainer(timeAttack[questionNumber].opB, opBColor, 'B',timeAttack[questionNumber].correctAnswer),
+              buildOptionContainer(timeAttack[questionNumber].opC, opCColor, 'C',timeAttack[questionNumber].correctAnswer),
+              buildOptionContainer(timeAttack[questionNumber].opD, opDColor, 'D',timeAttack[questionNumber].correctAnswer),
 
               Container(
                 padding: EdgeInsets.all(20.0),
@@ -287,7 +287,7 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
     );
   }
   
-  buildOptionContainer(String text, Color color, String op)
+  buildOptionContainer(String text, Color color, String op,String correct)
   {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 15.0),
@@ -301,7 +301,7 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
           ),
           child: Center(
             child: Text(
-              text,
+              text == correct ? '$text (correct)' : text,
               style: TextStyle(
                 color: AppColors.textColor(),
                 fontSize: 22.0,

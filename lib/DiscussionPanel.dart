@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fun/CommentScreen.dart';
+import 'package:fun/EditQuestion.dart';
 import 'package:fun/Post.dart';
 import 'package:timeago/timeago.dart' as TimeAgo;
 import 'package:fun/AppColors.dart';
@@ -148,53 +149,131 @@ class _DiscussionPanelState extends State<DiscussionPanel> {
                   ),
                   trailing: IconButton(
                     icon: Icon(
-                      Icons.delete,
+                      Icons.more_horiz,
                       color: AppColors.textColor(),
                       size: 25,
                     ),
                     onPressed: (){
-                      showDialog(
+                      showModalBottomSheet(
                           context: context,
-                          builder: (BuildContext context){
-                            return AlertDialog(
-                              title: Text(
-                                'Delete Post',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              content: Text('Are you sure you want to delete the post?'),
-                              actions: <Widget>[
-                                FlatButton(
-                                  child: Text(
-                                    'Yes',
-                                    style: TextStyle(
-                                      color: Colors.blue,
-                                      fontSize: 18,
+                          builder: (context){
+                            return Container(
+                              padding: EdgeInsets.all(10.0),
+                              color: AppColors.backgroundColor(),
+                              child: ListView(
+                                children: [
+                                  Image(
+                                    image: AssetImage('images/Title.png'),
+                                    width: 200,
+                                    height: 150,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 10.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      color: AppColors.containerColor(),
+                                    ),
+                                    child: ListTile(
+                                      leading: Icon(
+                                        Icons.delete,
+                                        size: 30.0,
+                                        color: AppColors.textColor(),
+                                      ),
+                                      title: Text(
+                                        'Delete Post',
+                                        style: TextStyle(
+                                          color: AppColors.textColor(),
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      onTap: (){
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context){
+                                              return AlertDialog(
+                                                title: Text(
+                                                  'Delete Post',
+                                                  style: TextStyle(
+                                                    color: Colors.blue,
+                                                  ),
+                                                ),
+                                                content: Text('Are you sure you want to delete the post?'),
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                    child: Text(
+                                                      'Yes',
+                                                      style: TextStyle(
+                                                        color: Colors.blue,
+                                                        fontSize: 18,
+                                                      ),
+                                                    ),
+                                                    onPressed: (){
+                                                      Firestore.instance.collection('NewsFeed').document(postID).delete();
+                                                      Firestore.instance.collection('Comments').document(postID).delete();
+                                                      Navigator.of(context).pop();
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                  ),
+                                                  FlatButton(
+                                                    child: Text(
+                                                        'No',
+                                                        style: TextStyle(
+                                                          color: Colors.red,
+                                                          fontSize: 18,
+                                                        )
+                                                    ),
+                                                    onPressed: (){
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                  )
+                                                ],
+                                              );
+                                            }
+                                        );
+                                      },
                                     ),
                                   ),
-                                  onPressed: (){
-                                    Firestore.instance.collection('NewsFeed').document(postID).delete();
-                                    Firestore.instance.collection('Comments').document(postID).delete();
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                FlatButton(
-                                  child: Text(
-                                      'No',
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: 18,
-                                      )
+
+                                  Container(
+                                    margin: EdgeInsets.only(top: 10.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      color: AppColors.containerColor(),
+                                    ),
+                                    child: ListTile(
+                                      leading: Icon(
+                                        Icons.edit,
+                                        size: 30.0,
+                                        color: AppColors.textColor(),
+                                      ),
+                                      title: Text(
+                                        'Edit Post',
+                                        style: TextStyle(
+                                          color: AppColors.textColor(),
+                                          fontSize: 20.0,
+                                        ),
+                                      ),
+                                      onTap: (){
+                                        Navigator.of(context).pop();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => EditQuestion(
+                                              currentUserID: currentUserID,
+                                              postID: postID,
+                                              statement: statement,
+                                            )
+                                          )
+                                        );
+                                      },
+                                    ),
                                   ),
-                                  onPressed: (){
-                                    Navigator.of(context).pop();
-                                  },
-                                )
-                              ],
+                                ],
+                              ),
                             );
                           }
                       );
+
                     },
                   ),
                 ),
@@ -308,6 +387,11 @@ class _DiscussionPanelState extends State<DiscussionPanel> {
           )
       ),
     );
+  }
+
+  deletePost()
+  {
+
   }
 }
 

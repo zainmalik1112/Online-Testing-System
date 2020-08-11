@@ -34,6 +34,7 @@ class _PracticePageState extends State<PracticePage> {
               buildContainer('images/ecat.jpg','ECAT'),
               buildContainer('images/net.png','NET'),
               buildContainer('images/fast.JPG','FAST-NU'),
+              buildContainer('images/nts.jpg','NTS'),
               buildContainer('images/timeAttack.png','TIME ATTACK'),
             ],
           )

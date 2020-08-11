@@ -32,6 +32,7 @@ class _TestPageState extends State<TestPage> {
             buildContainer('images/ecat.jpg','ECAT'),
             buildContainer('images/net.png','NET'),
             buildContainer('images/fast.JPG','FAST-NU'),
+            buildContainer('images/nts.jpg','NTS'),
             buildContainer('images/customize.png', 'Customized Test'),
           ],
         ),
@@ -72,7 +73,7 @@ class _TestPageState extends State<TestPage> {
             )
         ),
         onTap: (){
-         if(title == 'ECAT' || title == 'NET' || title == 'FAST-NU'){
+         if(title == 'ECAT' || title == 'NET' || title == 'FAST-NU' || title == 'NTS'){
            Navigator.push(
              context,
              MaterialPageRoute(

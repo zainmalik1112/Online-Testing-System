@@ -9,22 +9,20 @@ import 'package:uuid/uuid.dart';
 class Post extends StatefulWidget {
 
   final currentUserID;
-  final bool editProfile;
-  Post({this.currentUserID, this.editProfile});
+  Post({this.currentUserID});
 
   @override
-  _PostState createState() => _PostState(currentUserID: this.currentUserID, editProfile: this.editProfile);
+  _PostState createState() => _PostState(currentUserID: this.currentUserID);
 }
 
 class _PostState extends State<Post> {
 
   var uuid = Uuid();
-  final bool editProfile;
   final currentUserID;
   final fireStore = Firestore.instance;
   User user;
   bool showIndicator = false;
-  _PostState({this.currentUserID, this.editProfile});
+  _PostState({this.currentUserID});
 
   @override
   Widget build(BuildContext context) {

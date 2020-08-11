@@ -562,15 +562,30 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
                   ),
                   SizedBox(
                     height: 10,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          '($test, '+ fullTest[questionNumber].difficulty+')',
+                          style: TextStyle(
+                              color: Colors.white,
+                            fontSize: 18.0,
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
           ),
-          buildOptionContainer(fullTest[questionNumber].opA),
-          buildOptionContainer(fullTest[questionNumber].opB),
-          buildOptionContainer(fullTest[questionNumber].opC),
-          buildOptionContainer(fullTest[questionNumber].opD),
+          buildOptionContainer(fullTest[questionNumber].opA,fullTest[questionNumber].correctAnswer),
+          buildOptionContainer(fullTest[questionNumber].opB,fullTest[questionNumber].correctAnswer),
+          buildOptionContainer(fullTest[questionNumber].opC,fullTest[questionNumber].correctAnswer),
+          buildOptionContainer(fullTest[questionNumber].opD,fullTest[questionNumber].correctAnswer),
 
           Padding(
             padding: EdgeInsets.only(top: 8.0),
@@ -845,7 +860,7 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
   }
 
 
-  buildOptionContainer(String text) {
+  buildOptionContainer(String text,String correct) {
     return Padding(
       padding: const EdgeInsets.only(top: 2.0, left: 8.0, right: 8.0, bottom: 2.0),
       child: Container(
@@ -866,7 +881,7 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
               },
             ),
             title: Text(
-                text,
+                text == correct ? '$text (correct)' : text,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 22.0,

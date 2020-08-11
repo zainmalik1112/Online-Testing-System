@@ -374,15 +374,27 @@ class _McqScreenState extends State<McqScreen> {
                           ),
                         ),
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '('+practiceTest[0].test+', '+practiceTest[questionNumber].difficulty+')',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
               ),
 
-              buildOptionContainer(practiceTest[questionNumber].opA),
-              buildOptionContainer(practiceTest[questionNumber].opB),
-              buildOptionContainer(practiceTest[questionNumber].opC),
-              buildOptionContainer(practiceTest[questionNumber].opD),
+              buildOptionContainer(practiceTest[questionNumber].opA,practiceTest[questionNumber].correctAnswer),
+              buildOptionContainer(practiceTest[questionNumber].opB,practiceTest[questionNumber].correctAnswer),
+              buildOptionContainer(practiceTest[questionNumber].opC,practiceTest[questionNumber].correctAnswer),
+              buildOptionContainer(practiceTest[questionNumber].opD,practiceTest[questionNumber].correctAnswer),
 
               Padding(
                   padding: EdgeInsets.all(10),
@@ -499,7 +511,7 @@ class _McqScreenState extends State<McqScreen> {
     );
   }
 
-  buildOptionContainer(String text) {
+  buildOptionContainer(String text, String correct) {
     return Padding(
       padding: const EdgeInsets.only(top: 2.0, left: 8.0, right: 8.0, bottom: 2.0),
       child: Container(
@@ -520,7 +532,7 @@ class _McqScreenState extends State<McqScreen> {
               },
             ),
             title: Text(
-                text,
+                text == correct ? '$text (correct)' : text,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 22.0,
