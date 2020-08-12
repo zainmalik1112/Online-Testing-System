@@ -46,6 +46,7 @@ class _PerformanceTestState extends State<PerformanceTest> {
                 buildContainer('images/ecat.jpg','ECAT'),
                 buildContainer('images/net.png','NET'),
                 buildContainer('images/fast.JPG','FAST-NU'),
+                buildContainer('images/nts.jpg','NTS'),
                 buildContainer('images/fullFledge.png','Full-Fledge Exam'),
               ],
             )
@@ -89,7 +90,7 @@ class _PerformanceTestState extends State<PerformanceTest> {
         onTap: (){
           test = title;
 
-          if(test == 'ECAT' || test == 'NET' || test == 'FAST-NU'){
+          if(test == 'ECAT' || test == 'NET' || test == 'FAST-NU' || test == 'NTS'){
             Navigator.push(
                 context,
                 MaterialPageRoute(

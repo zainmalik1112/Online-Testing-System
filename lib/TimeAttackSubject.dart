@@ -85,6 +85,14 @@ class _TimeAttackSubjectState extends State<TimeAttackSubject> {
       list.add(buildSubjectNameContainer(test,'images/english.png','English'));
       list.add(buildSubjectNameContainer(test, 'images/IQ.png', 'Intelligence'));
     }
+    else if(test == 'NTS'){
+      list.add(buildSubjectNameContainer(test,'images/chemistry.png','Chemistry'));
+      list.add(buildSubjectNameContainer(test,'images/physics.png','Physics'));
+      list.add(buildSubjectNameContainer(test,'images/maths.png','Mathematics'));
+      list.add(buildSubjectNameContainer(test,'images/computerScience.png','Computer Science'));
+      list.add(buildSubjectNameContainer(test,'images/english.png','English'));
+      list.add(buildSubjectNameContainer(test, 'images/IQ.png', 'Intelligence'));
+    }
     else{
       list.add(buildSubjectNameContainer(test, 'images/basicMaths.png', 'Basic Mathematics'));
       list.add(buildSubjectNameContainer(test,'images/maths.png','Mathematics'));

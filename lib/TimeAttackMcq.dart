@@ -47,11 +47,13 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
     super.initState();
 
     if(test == 'ECAT')
-      seconds = 60;
+      seconds = 10;
     else if(test == 'NET')
-      seconds = 75;
+      seconds = 10;
+    else if(test == 'NTS')
+      seconds = 10;
     else
-      seconds = 65;
+      seconds = 10;
 
     for(int i = 0; i < timeAttack.length; i++){
       selectedOptions.add(null);
@@ -89,20 +91,24 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
           statusColor = AppColors.backgroundColor();
           if(questionNumber == timeAttack.length - 1){
             if(test == 'ECAT')
-              seconds = 60;
+              seconds = 10;
             else if(test == 'NET')
-              seconds = 75;
+              seconds = 10;
+            else if(test == 'NTS')
+              seconds = 10;
             else if(test == 'FAST-NU')
-              seconds = 65;
+              seconds = 10;
             t.cancel();
           }
           else{
             if(test == 'ECAT')
-              seconds = 60;
+              seconds = 10;
             else if(test == 'NET')
-              seconds = 75;
+              seconds = 10;
             else if(test == 'FAST-NU')
-              seconds = 65;
+              seconds = 10;
+            else if(test == 'NTS')
+              seconds = 10;
             questionNumber++;
           }
         });
@@ -353,9 +359,11 @@ class _TimeAttackMcqState extends State<TimeAttackMcq> {
 
             setState(() {
               if(test == 'ECAT')
-                seconds = 60;
+                seconds = 10;
               else if(test == 'NET')
-                seconds = 75;
+                seconds = 10;
+              else if(test == 'NTS')
+                seconds = 10;
               else
                 seconds = 65;
               opAColor = AppColors.containerColor();

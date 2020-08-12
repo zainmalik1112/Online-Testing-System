@@ -338,6 +338,45 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
     );
   }
 
+  calculateNTSScore()
+  {
+    totalScore = 100;
+    for(int i = 0; i < fullTest.length; i++){
+      if(selectedOptions[i] == fullTest[i].correctAnswer){
+        attempted++;
+        correct++;
+        testScore++;
+      }
+      else if(selectedOptions[i] != fullTest[i].correctAnswer && selectedOptions[i] != null){
+        incorrect++;
+        attempted++;
+      }
+      else if(selectedOptions[i] == null){
+        unAttempted++;
+      }
+    }
+
+    savePerformance();
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PerformanceScreen(
+              attempted: attempted.toDouble(),
+              unattempted: unAttempted.toDouble(),
+              incorrect: incorrect.toDouble(),
+              correct: correct.toDouble(),
+              totalQuestions: fullTest.length.toDouble(),
+              testScore: testScore.toDouble(),
+              totalMarks: totalScore.toDouble(),
+              testType: 'FullFledge',
+              questions: fullTest,
+              selectedOptions: selectedOptions,
+            )
+        )
+    );
+  }
+
   Future<bool> _willPopCallback() async {
     quit();
     // await showDialog or Show add banners or whatever
@@ -406,6 +445,8 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
       calculateNUSTScore();
     else if(test == 'FAST-NU')
       calculateFASTScore();
+    else if(test == 'NTS')
+      calculateNTSScore();
     else
       calculateCustomizedTestScore();
   }

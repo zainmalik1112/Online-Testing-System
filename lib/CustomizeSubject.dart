@@ -483,11 +483,13 @@ class _CustomizeSubjectState extends State<CustomizeSubject> {
     if(subjectValue == 'Computer Science' || subjectValue == 'Chemistry'){
       list.add(radioButton2('ECAT'));
       list.add(radioButton2('NET'));
+      list.add(radioButton2('NTS'));
     }
     else{
       list.add(radioButton2('ECAT'));
       list.add(radioButton2('NET'));
       list.add(radioButton2('FAST-NU'));
+      list.add(radioButton2('NTS'));
     }
 
     return list;
