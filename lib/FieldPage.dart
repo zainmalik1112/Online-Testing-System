@@ -154,6 +154,8 @@ class _FieldPageState extends State<FieldPage> {
                exam = await prepareECAT(title);
              else if(test == 'NET')
                exam = await prepareNET(title);
+             else if(test == 'NTS')
+               exam = await prepareNTS(title);
              else
                exam = await prepareFAST(title);
 

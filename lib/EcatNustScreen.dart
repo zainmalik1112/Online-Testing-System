@@ -77,6 +77,10 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
       minutes = 100;
       seconds = 0;
     }
+    else if(test == 'NTS'){
+      minutes = 90;
+      seconds = 0;
+    }
     else{
       minutes = customizedMinutes;
       seconds = customizedSeconds;
@@ -787,6 +791,16 @@ class _EcatNustScreenState extends State<EcatNustScreen> {
         list.add(addElement('Computer Science', 'images/computerScience.png'));
     }
     else if(test == 'NET'){
+      list.add(addElement('Mathematics', 'images/maths.png'));
+      list.add(addElement('Physics', 'images/physics.png'));
+      if(field == 'Pre-Engineering')
+        list.add(addElement('Chemistry', 'images/chemistry.png'));
+      else
+        list.add(addElement('Computer Science', 'images/computerScience.png'));
+      list.add(addElement('English', 'images/english.png'));
+      list.add(addElement('Intelligence', 'images/IQ.png'));
+    }
+    else if(test == 'NTS'){
       list.add(addElement('Mathematics', 'images/maths.png'));
       list.add(addElement('Physics', 'images/physics.png'));
       if(field == 'Pre-Engineering')

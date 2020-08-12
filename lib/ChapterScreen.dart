@@ -173,6 +173,9 @@ class _ChapterScreenState extends State<ChapterScreen> {
               await prepareBasicMathOrIQPracticeTest(test, subject, chapter);
             }
             catch (e) {
+              setState(() {
+                progress = false;
+              });
               showAlertDialogue(e.toString());
               return;
             }
@@ -182,6 +185,9 @@ class _ChapterScreenState extends State<ChapterScreen> {
               await preparePracticeTest(test, subject, chapter);
             }
             catch(e){
+              setState(() {
+                progress = false;
+              });
               showAlertDialogue(e.toString());
               return;
             }

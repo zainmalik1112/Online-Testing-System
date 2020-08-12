@@ -87,49 +87,98 @@ class _TimeAttackResultState extends State<TimeAttackResult> {
   buildBody()
   {
     return Center(
-      child: Container(
-        height: 200,
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-          color: AppColors.containerColor(),
-        ),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Total Questions: $totalQuestions',
-                style: TextStyle(
-                  color: AppColors.textColor(),
-                  fontSize: 25.0,
-                ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Text(
+              'PERFORMANCE CRITERIA:',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Attempted: $attempted',
-                style: TextStyle(
-                  color: AppColors.textColor(),
-                  fontSize: 25.0,
-                ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Poor = Questions attempted less than 20',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
               ),
             ),
+          ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Time Management: $timeManagement',
-                style: TextStyle(
-                  color: AppColors.textColor(),
-                  fontSize: 25.0
-                ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Good = Questions attempted 20-25',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Excellent = Questions attempted more than 25',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
+            ),
+          ),
+
+          Container(
+            height: 200,
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.0),
+              color: AppColors.containerColor(),
+            ),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Total Questions: $totalQuestions',
+                    style: TextStyle(
+                      color: AppColors.textColor(),
+                      fontSize: 25.0,
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Attempted: $attempted',
+                    style: TextStyle(
+                      color: AppColors.textColor(),
+                      fontSize: 25.0,
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Time Management: $timeManagement',
+                    style: TextStyle(
+                      color: AppColors.textColor(),
+                      fontSize: 25.0
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

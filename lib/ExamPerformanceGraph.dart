@@ -104,6 +104,7 @@ class _ExamPerformanceGraphState extends State<ExamPerformanceGraph> {
                 radioButton('ECAT'),
                 radioButton('NET'),
                 radioButton('FAST-NU'),
+                radioButton('NTS'),
               ],
             ),
           ),
